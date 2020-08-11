@@ -37,7 +37,7 @@
                     <div class="form-group">
                         <label for="expiration_date" class="col-lg-2 control-label">Expiration Date</label>
                         <div class="col-lg-10">
-                            <input type="datetime" name="expiration_date" class="form-control"  placeholder="Nhập ngày hết hạn">
+                            <input type="datetime-local" name="expiration_date" class="form-control"  placeholder="Nhập ngày hết hạn">
                         </div>
                     </div>
                     <div class="form-group">

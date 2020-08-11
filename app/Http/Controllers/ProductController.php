@@ -8,6 +8,8 @@ use App\Components\Recusive;
 use App\Traits\StorageImageTrait;
 use App\Product;
 use App\Product_Image;
+use App\Tag;
+use App\product_tag;
 
 class ProductController extends Controller
 {
@@ -15,12 +17,19 @@ class ProductController extends Controller
     private $category;
     private $product;
     private $product_image;
-    public function __construct(Category $category, Product $product, Product_Image $product_image)
+    public function __construct(
+        Category $category,
+        Product $product,
+        Product_Image $product_image,
+        Tag $tag,
+        product_tag $product_tag
+    )
     {
         $this->category = $category;
         $this->product = $product;
-        $this->$product_image = $product_image;
-
+        $this->product_image = $product_image;
+        $this->tag = $tag;
+        $this->product_tag = $product_tag;
     }
 
     public function getCategory($parentId)
@@ -63,7 +72,7 @@ class ProductController extends Controller
             foreach ($request->images as $fileItem) {
                 $dataProductImages = $this->storageUploadMultiple($fileItem, 'product');
                 //dd($dataProductImages);
-                //Eloquent one to many->create 
+                //Eloquent one to many->create
                 $product->product_images()->create([
                     'image_path'=> $dataProductImages['file_path'],
                     'image_name'=> $dataProductImages['file_name'],
@@ -85,5 +94,19 @@ class ProductController extends Controller
         //     'file_path'=>Storage::url($pathFile)
         // ];
         // dd($data);
+
+        //Insert tags to Product
+        foreach ($request->tags as $tagItem) {
+            //insert to Tags
+            $tagInstance = $this->tag->firstOrCreate(['name'=>$tagItem]);
+            $tagsId[] = $tagInstance->id;
+        //     //insert to product_tag truy vấn bảng
+        //     $this->product_tag->create([
+        //        'product_id'=>$product->id,
+        //        'tag_id'=>$tagInstance->id
+        //    ]);
+        }
+        //Eloquent insert in many to many
+        $product->tags()->attach($tagsId);
     }
 }

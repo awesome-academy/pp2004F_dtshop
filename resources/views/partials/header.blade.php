@@ -1,11 +1,12 @@
 <div class="header navbar">
     <div class="header-container">
         <div class="nav-logo">
-            <a href="index.html">
+            <a href="/admin">
                 <div class="logo logo-dark"
-                    style="background-image: url('{{asset('applicator/dist/assets/images/logo/logo.png')}}')"></div>
+                    style="background-image: url('{{asset( 'applicator/dist/assets/images/logo/logo.png' )}}')">
+                </div>
                 <div class="logo logo-white"
-                    style="background-image: url('{{asset('applicator/dist/assets/images/logo/logo-white.png')}}')">
+                    style="background-image: url('{{asset( 'applicator/dist/assets/images/logo/logo-white.png' )}}')">
                 </div>
             </a>
         </div>

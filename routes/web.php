@@ -112,3 +112,14 @@ Route::get('/admin', 'AdminController@index')->name('admin.home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Route of DisCount
+Route::prefix('discount')->group(function(){
+    Route::get('/', 'DiscountController@index')->name('discount');
+    Route::get('/create', 'DiscountController@create')->name('create_discount');
+    Route::post('/create', 'DiscountController@store')->name('create_discount');
+    Route::get('/{id?}', 'DiscountController@show');
+    Route::get('/{id?}/edit', 'DiscountController@edit')->name('edit_discount');
+    Route::post('/{id?}/edit', 'DiscountController@update')->name('edit_discount');
+    Route::get('/{id?}/delete', 'DiscountController@destroy')->name('delete_discount');
+});

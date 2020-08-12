@@ -15,11 +15,19 @@
         @csrf
         <div class="form-group">
             <label>Tên Sản Phẩm</label>
-            <input type="text" class="form-control" name='name' placeholder="Nhập Tên Sản Phẩm">
+            <input type="text" class="form-control @error('title') is-invalid @enderror" name='name'
+                placeholder="Nhập Tên Sản Phẩm" value="{{ old('name') }}">
+            @error('name')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="form-group">
             <label>Giá Sản Phẩm</label>
-            <input type="text" class="form-control" name='price' placeholder="Nhập Giá Sản Phẩm">
+            <input type="text" class="form-control @error('title') is-invalid @enderror" name='price'
+                placeholder="Nhập Giá Sản Phẩm" value="{{ old('price') }}">
+            @error('price')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="form-group">
             <label>Ảnh Đại Diện</label>
@@ -31,18 +39,29 @@
         </div>
         <div class="form-group">
             <label>Chọn Danh Mục</label>
-            <select class="form-control select_init" name='category_id'>
+            <select class="form-control select_init @error('title') is-invalid @enderror" name='category_id'>
                 <option value="">Chọn Danh Mục Cha</option>
                 {{!!$htmlOption!!}}
             </select>
+            @error('category_id')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="form-group">
             <label>Tags</label>
-            <select class="form-control tag_select" name="tags[]" multiple="multiple"></select>
+            <select class="form-control tag_select @error('title') is-invalid @enderror" name="tags[]"
+                multiple="multiple"></select>
+            @error('tags')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="form-group">
             <label>Content</label>
-            <textarea class="form-control my-editor" name='contents' rows="3"></textarea>
+            <textarea class="form-control my-editor @error('title') is-invalid @enderror" name='contents'
+                rows="3"></textarea>
+            @error('contents')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

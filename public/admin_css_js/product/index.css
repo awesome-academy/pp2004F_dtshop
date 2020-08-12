@@ -1,11 +1,25 @@
 .product_image_150_100 {
-    width: 150px;
-    height: 100px;
+    width: 100px;
+    height: 130px;
     object-fit: cover;
 }
 
 .product_image_250_150 {
-    width: 150px;
-    height: 250px;
+    width: 100px;
+    height: 150px;
     object-fit: cover;
+}
+
+.images_detail {
+    width: 130px;
+    height: 150px;
+    padding: 5px 5px 5px 5px;
+}
+
+.container_images {
+    padding: 5px 5px 5px 5px;
+}
+
+.container_images_below {
+    padding: 5px 5px 5px 5px;
 }

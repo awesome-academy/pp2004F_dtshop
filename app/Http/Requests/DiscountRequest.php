@@ -26,7 +26,7 @@ class DiscountRequest extends FormRequest
         return [
             'code' => 'required|string|min:15',
             'discount' =>'required|integer',
-            'expiration_date' => 'required|datetime',
+            'expiration_date' => 'required',
         ];
     }
 }

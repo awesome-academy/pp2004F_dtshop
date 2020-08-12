@@ -114,10 +114,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Route of DisCount
-Route::get('/discount','DiscountController@index')->name('discount');
-Route::get('/discount/create','DiscountController@create')->name('create_discount');
-Route::post('/discount/create','DiscountController@store')->name('create_discount');
-Route::get('/discount/{id?}','DiscountController@show');
-Route::get('/discount/{id?}/edit','DiscountController@edit')->name('edit_discount');
-Route::post('/discount/{id?}/edit','DiscountController@update')->name('edit_discount');
-Route::get('/discount/{id?}/delete','DiscountController@destroy')->name('delete_discount');
+Route::prefix('discount')->group(function(){
+    Route::get('/', 'DiscountController@index')->name('discount');
+    Route::get('/create', 'DiscountController@create')->name('create_discount');
+    Route::post('/create', 'DiscountController@store')->name('create_discount');
+    Route::get('/{id?}', 'DiscountController@show');
+    Route::get('/{id?}/edit', 'DiscountController@edit')->name('edit_discount');
+    Route::post('/{id?}/edit', 'DiscountController@update')->name('edit_discount');
+    Route::get('/{id?}/delete', 'DiscountController@destroy')->name('delete_discount');
+});

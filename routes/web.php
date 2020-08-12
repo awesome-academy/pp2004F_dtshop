@@ -82,18 +82,18 @@ Route::prefix('admin')->group(function(){
             'as'=> 'product.store',
             'uses' => 'ProductController@store'
         ]);
-        // Route::get('/{id}/edit', [
-        //     'as' => 'menus.edit',
-        //     'uses'=> 'MenuController@edit'
-        // ]);
-        // Route::post('/{id}/update', [
-        //     'as' => 'menus.update',
-        //     'uses'=> 'MenuController@update'
-        // ]);
-        // Route::get('/{id}/delete', [
-        //     'as' => 'menus.delete',
-        //     'uses' => 'MenuController@destroy'
-        // ]);
+        Route::get('/{id}/edit', [
+            'as' => 'product.edit',
+            'uses'=> 'ProductController@edit'
+        ]);
+        Route::post('/{id}/update', [
+            'as' => 'product.update',
+            'uses'=> 'ProductController@update'
+        ]);
+        Route::get('/{id}/delete', [
+            'as' => 'product.delete',
+            'uses' => 'ProductController@destroy'
+        ]);
     });
 });
 Route::get('/', function(){

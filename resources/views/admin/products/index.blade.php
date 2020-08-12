@@ -1,70 +1,60 @@
 @extends('layouts.admin')
-@section('title', 'List Product')
+@section('title', 'All Products')
+
+
+@section('css')
+<link href="{{ asset('admin_css_js/product/index.css') }}" rel="stylesheet" />
+@endsection
+
+@section('js')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="{{ asset('admin_css_js/product/index.js') }}"></script>
+@endsection
 
 @section('content')
 <div class="main-content">
     @include('partials.content-header', ['name'=>'Products', 'key'=>'List'])
-    <div class="main-content">
+    <div class="container-fluid">
         <div class="col-md-12">
             <div class="card-header">
                 <a href="{{ route('product.create')}}" class="btn btn-success float-right m-2">Add</a>
             </div>
         </div>
-        <div class="container-fluid">
-            <div class="card">
-                <div class="card-body">
-                    <div class="table-overflow">
-                        <table id="dt-opt" class="table table-hover table-xl">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <div class="checkbox p-0">
-                                            <input id="selectable1" type="checkbox" class="checkAll" name="checkAll">
-                                            <label for="selectable1"></label>
-                                        </div>
-                                    </th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Image</th>
-                                    <th>Category</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="checkbox">
-                                            <input id="selectable2" type="checkbox">
-                                            <label for="selectable2"></label>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="list-media">
-                                            <div class="list-item">
-                                                <div class="media-img">
-                                                    <img src="assets/images/avatars/thumb-1.jpg" alt="">
-                                                </div>
-                                                <div class="info">
-                                                    <span class="title">#</span>
-                                                    <span class="sub-title">#</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge badge-pill badge-gradient-success">#</span></td>
-                                    <td>#</td>
-                                    <td>#</td>
-                                    <td class="text-center font-size-18">
-                                        <a href="#" class="text-gray m-r-15"><i class="ti-pencil"></i></a>
-                                        <a href="#" class="text-gray"><i class="ti-trash"></i></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Image</th>
+                <th scope="col">Category</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($products as $product)
+            <tr>
+                <th scope="row">{!! $product->id !!}</th>
+                <td>{!! $product->name !!}</td>
+                <td>{{ number_format($product->price) }}</td>
+                <td>
+                    <img class="product_image_150_100" src="{{ $product->image_path }}" alt="">
+                </td>
+                <td>{{ optional($product->category)->name }}</td>
+                <td>
+                    <a href="{{ route('product.edit', ['id'=>$product->id]) }}" class="btn btn-default">Edit</a>
+                    <a href="" 
+                    data-url = "{{ route('product.delete', ['id'=>$product->id])}}" class="btn btn-default action_delete">Delete</a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+    <div class="col-md-12">
+        {{ $products->links() }}
     </div>
 
-    @endsection
+</div>
+
+@endsection

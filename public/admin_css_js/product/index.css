@@ -1,0 +1,11 @@
+.product_image_150_100 {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.product_image_250_150 {
+    width: 150px;
+    height: 250px;
+    object-fit: cover;
+}

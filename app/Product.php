@@ -17,4 +17,11 @@ class Product extends Model
     {
         return $this->belongsToMany('App\Tag', 'product_tags', 'product_id', 'tag_id')->withTimestamps();
     }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Category', 'category_id');
+    }
+
+    
 }

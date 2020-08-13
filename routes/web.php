@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Frontend
 */
 
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->group(function () {
     Route::prefix('category')->group(function () {
         Route::get('/', [
             'as'=>'categories.index',
@@ -95,8 +95,34 @@ Route::prefix('admin')->group(function(){
             'uses' => 'ProductController@destroy'
         ]);
     });
+    Route::prefix('slider')->group(function () {
+        Route::get('/', [
+            'as'=>'slider.index',
+            'uses'=>'SliderController@index'
+            ]);
+        Route::get('/create', [
+            'as'=>'slider.create',
+            'uses'=>'SliderController@create'
+             ]);
+        Route::post('/store', [
+            'as'=>'slider.store',
+            'uses'=>'SliderController@store'
+             ]);
+        Route::get('/{id}/edit', [
+            'as'=>'slider.edit',
+            'uses'=>'SliderController@edit'
+             ]);
+        Route::post('/{id}/update', [
+            'as'=>'slider.update',
+            'uses'=>'SliderController@update'
+             ]);
+        Route::get('/{id}/delete', [
+            'as'=>'slider.delete',
+            'uses'=>'SliderController@destroy'
+             ]);
+    });
 });
-Route::get('/', function(){
+Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/admin', 'AdminController@index')->name('admin.home');
@@ -114,7 +140,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Route of DisCount
-Route::prefix('discount')->group(function(){
+Route::prefix('discount')->group(function () {
     Route::get('/', ['uses' =>'DiscountController@index','as' => 'dis']);
     Route::get('/create', [  'uses' => 'DiscountController@create', 'as' =>'create_discount']);
     Route::post('/create', [ 'uses' =>'DiscountController@store', 'as' =>'create_discount']);

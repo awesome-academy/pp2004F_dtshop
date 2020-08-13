@@ -163,7 +163,6 @@ class ProductController extends Controller
                 'message' => 'success',
             ], 200);
         } catch (\Exception $exception) {
-            DB::rollBack();
             Log::error('Message: '. $exception->getMessage() . ' Line: ' . $exception->getLine());
             return response()->json([
                 'code' => 500,

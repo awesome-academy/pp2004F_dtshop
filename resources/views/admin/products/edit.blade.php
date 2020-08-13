@@ -28,20 +28,20 @@
             <label>Ảnh Đại Diện</label>
             <input type="file" class="form-control-file" name="image_path">
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 ">
             <div class="row">
                 <img class="product_image_250_150" src="{{$product->image_path}}" alt="">
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group ">
             <label>Ảnh Chi Tiết</label>
             <input type="file" class="form-control-file" name="images[]" multiple>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12 container_images">
             <div class="row">
                 @foreach(($product->product_images) as $productImages )
-                <div class="col-md-3">
-                    <img src="{{$productImages->image_path}}" alt="">
+                <div class="col-md-3 container_images_below">
+                    <img class = "images_detail" src="{{$productImages->image_path}}" alt="">
                 </div>
                 @endforeach
             </div>

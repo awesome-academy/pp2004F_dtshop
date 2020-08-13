@@ -12,6 +12,7 @@ use App\Tag;
 use App\product_tag;
 use DB;
 use Log;
+use App\Http\Requests\ProductFormRequest;
 
 class ProductController extends Controller
 {
@@ -52,7 +53,7 @@ class ProductController extends Controller
         return view('admin.products.create', compact('htmlOption'));
     }
     
-    public function store(Request $request)
+    public function store(ProductFormRequest $request)
     {
         try {
             DB::beginTransaction();

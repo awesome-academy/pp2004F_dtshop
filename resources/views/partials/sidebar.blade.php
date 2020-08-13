@@ -57,7 +57,7 @@
                         <a href="{{route('product.index')}}">All Products</a>
                     </li>
                     <li>
-                        <a href=" ">New Product</a>
+                        <a href="{{route('product.create')}}">New Product</a>
                     </li>
                 </ul>
             </li>
@@ -77,6 +77,25 @@
                     </li>
                     <li>
                         <a href="{{route('create_discount')}}">New Discount</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown open">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="mdi mdi-gauge"></i>
+                    </span>
+                    <span class="title">Slider</span>
+                    <span class="arrow">
+                        <i class="mdi mdi-chevron-right"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="active">
+                        <a href="{{route('slider.index')}}">All Slider</a>
+                    </li>
+                    <li>
+                        <a href="{{route('slider.create')}}">New Slider</a>
                     </li>
                 </ul>
             </li>

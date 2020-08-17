@@ -122,9 +122,6 @@ Route::prefix('admin')->group(function () {
              ]);
     });
 });
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::get('/admin', 'AdminController@index')->name('admin.home');
 // Route::get('/', 'AdminController@login');
 // Route::post('/', 'AdminController@post_login');
@@ -146,3 +143,5 @@ Route::prefix('discount')->group(function () {
     Route::post('/create', [ 'uses' =>'DiscountController@store', 'as' =>'create_discount']);
     Route::get('/{id?}/delete', [ 'uses' =>'DiscountController@destroy','as'=>'delete_discount']);
 });
+//Route of web
+Route::get('/','WebController@index');
